@@ -1,8 +1,9 @@
-from fastapi import FastAPI
 from datetime import datetime
+
+from fastapi import FastAPI
+
 import models
 from vader import VaderSingleton, get_metadata
-
 
 app = FastAPI()
 

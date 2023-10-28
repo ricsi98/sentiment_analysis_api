@@ -1,13 +1,16 @@
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import nltk
-import threading
-from typing import Tuple, Dict
-import numpy as np
 import os
+import threading
+from typing import Dict, Tuple
+
+import nltk
+import numpy as np
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 from logconfig import get_logger
 
 SENTIMENT_RESULT = Tuple[str, float]
 _VADER_LEXICON = "vader_lexicon"
+
 
 def _get_sentiment(pos: float, neg: float, neu: float, **kwargs) -> SENTIMENT_RESULT:
     scores = [pos, neg, neu]
@@ -41,12 +44,15 @@ class VaderSingleton:
         try:
             nltk.data.find(_VADER_LEXICON)
         except LookupError:
-            self.logger.warn(f"Could not find nltk package {_VADER_LEXICON}, downloading...")
+            self.logger.warn(
+                f"Could not find nltk package {_VADER_LEXICON}, downloading...")
             nltk.download(_VADER_LEXICON)
         self.sid = SentimentIntensityAnalyzer()
+        self.logger.info("VADER model initialized succesfully")
 
     def analyze_sentiment(self, text: str) -> SENTIMENT_RESULT:
         self.logger.info(f"Analyzing sentence: {text}")
         result = self.sid.polarity_scores(text)
-        self.logger.info(f"Sentiment analysis result: {result}. Input sentence: {text}")
+        self.logger.info(
+            f"Sentiment analysis result: {result}. Input sentence: {text}")
         return _get_sentiment(**result)
