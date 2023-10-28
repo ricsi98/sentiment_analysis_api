@@ -20,6 +20,7 @@ cd  lynx_interview
 
 2. (OPTIONAL) run tests:
 ```bash
+pip install -r requirements.txt
 pytest src
 ```
 
