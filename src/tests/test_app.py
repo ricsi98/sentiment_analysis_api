@@ -25,3 +25,9 @@ def test_sentiment():
     response = client.post("/predict", content='{"text": "I am very happy!"}', headers={"Content-Type": "application/json"})
     assert response.status_code == 200
     assert response.json()["sentiment"] == "positive"
+
+
+def test_sentiment_input_validation():
+    """We expect to get a validation error when the input is less than 3 characters long."""
+    response = client.post("/predict", content='{"text": "a"}', headers={"Content-Type": "application/json"})
+    assert response.status_code == 422
