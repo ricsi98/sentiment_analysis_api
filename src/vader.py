@@ -42,7 +42,7 @@ class VaderSingleton:
         self.logger = get_logger("vader")
         self.logger.info("Initializing VADER model")
         try:
-            nltk.data.find(_VADER_LEXICON)
+            nltk.data.find("sentiment/" + _VADER_LEXICON + ".zip")
         except LookupError:
             self.logger.warn(
                 f"Could not find nltk package {_VADER_LEXICON}, downloading...")
