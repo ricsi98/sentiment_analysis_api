@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 import models
 from vader import VaderSingleton, get_metadata
@@ -10,6 +10,10 @@ app = FastAPI()
 
 @app.get("/health", response_model=models.HealthCheckResponse)
 def health():
+    try:
+        VaderSingleton()
+    except:
+        raise HTTPException(status_code=503, detail="Service Unavailable")
     return models.HealthCheckResponse(
         status="up",
         timestamp=datetime.now()
