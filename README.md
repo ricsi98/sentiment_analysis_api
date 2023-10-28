@@ -1,14 +1,15 @@
-# Overview
+# Sentiment Analysis API
+## Overview
 
-The FastAPI Sentiment Analysis API is a web service that provides sentiment analysis using the VADER model. It offers endpoints to predict sentiment, check the API's health, and retrieve model metadata.
+The Sentiment Analysis API is a web service that provides sentiment analysis using the VADER model. It offers endpoints to predict sentiment, check the API's health, and retrieve model metadata.
 
-# Features
+## Features
 
 - Sentiment analysis of text using VADER model.
 - Health check endpoint for monitoring the API's status.
 - Model metadata endpoint to retrieve information about the deployed model.
 
-# Installation
+## Installation
 
 1. Clone the repository:
 
@@ -34,9 +35,9 @@ docker run -p 8000:8000 sentiment-api
 5. Now the service should be alive, you can access (and try) the API at [http://0.0.0.0:8000/docs](http://0.0.0.0:8000/docs)
 
 
-# Application Components
+## Application Components
 
-## File structure
+### File structure
 
 The project is organized into the following directories and files:
 
@@ -51,7 +52,7 @@ The project is organized into the following directories and files:
   - `test_vader.py`: Unit tests for the VADER sentiment analysis model in `vader.py`.
 
 
-## Singleton VADER Wrapper
+### Singleton VADER Wrapper
 
 The application utilizes a Singleton design pattern for the VADER sentiment analysis model. The Singleton VADER wrapper ensures that only one instance of the VADER model is created and reused throughout the application's lifecycle.
 
@@ -63,10 +64,10 @@ The Singleton VADER wrapper serves two main purposes:
 2. **Consistency**: The Singleton design pattern ensures that all parts of the application interact with the same VADER model instance, promoting data consistency.
 
 
-## Additional Validation
+### Additional Validation
 I've added an extra validation rule for input data in the `POST /predict` endpoint. Specifically, the input text provided should have a minimum length of 3 characters. This ensures that text inputs are of a sufficient length to perform sentiment analysis accurately.
 
-## Model Metadata
+### Model Metadata
 
 The application includes a model metadata endpoint (`/metadata`) that provides information about the deployed model. The metadata includes the following details:
 
@@ -79,9 +80,9 @@ The application includes a model metadata endpoint (`/metadata`) that provides i
 It's important to note that these metadata details, particularly the model version and training date, may not be applicable to the VADER sentiment analysis model. VADER is a lexicon-based sentiment analysis tool and does not have version-specific updates or a conventional training date like machine learning models. As a result, the default values or customizations of these fields may not provide meaningful information in the context of VADER.
 
 
-# Limitations
+## Limitations
 
-While the FastAPI Sentiment Analysis API is designed to be a reliable and efficient tool for sentiment analysis, it comes with some inherent limitations:
+While the Sentiment Analysis API is designed to be a reliable and efficient tool for sentiment analysis, it comes with some inherent limitations:
 
 1. **English Language Support**: The VADER sentiment analysis model used in this application is primarily designed for the English language. It may not provide accurate results for texts in other languages.
 
