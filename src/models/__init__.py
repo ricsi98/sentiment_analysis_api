@@ -1,1 +1,1 @@
-from .models import HealthCheckResponse, SentimentPrediction, ModelMetadata
+from .models import HealthCheckResponse, SentimentPrediction, ModelMetadata, SentimentInput

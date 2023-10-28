@@ -16,3 +16,7 @@ class ModelMetadata(BaseModel):
     model_version: str
     model_type: str
     model_training_date: str
+
+
+class SentimentInput(BaseModel):
+    text: str
