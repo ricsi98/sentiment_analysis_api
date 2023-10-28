@@ -16,9 +16,9 @@ def health():
 
 
 @app.post("/predict", response_model=models.SentimentPrediction)
-def predict(text: str):
+def predict(input: models.SentimentInput):
     vader = VaderSingleton()
-    sentiment, score = vader.analyze_sentiment(text)
+    sentiment, score = vader.analyze_sentiment(input.text)
     return models.SentimentPrediction(
         sentiment=sentiment,
         score=score
