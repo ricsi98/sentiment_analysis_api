@@ -14,8 +14,8 @@ The Sentiment Analysis API is a web service that provides sentiment analysis usi
 1. Clone the repository:
 
 ```bash
-git clone git@github.com:ricsi98/lynx_interview.git
-cd  lynx_interview
+git clone git@github.com:ricsi98/sentiment_analysis_api.git
+cd  sentiment_analysis_api
 ```
 
 2. (OPTIONAL) run tests:
